@@ -2,35 +2,46 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+# My Application (AI Prompt)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+AI Prompt is a full-featured prompt-creation platform that leverages the power of Next.js and NextAuth for OAuth to provide a seamless and secure user experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Google OAuth Authentication**: Users can easily sign up and sign in using their Google accounts, thanks to the robust integration of NextAuth.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Prompt Management**: Authenticated users have the ability to:
 
-## Learn More
+  - **Create**: Users can create new prompts with associated tags.
+  - **Update**: Users can update their existing prompts if they wish to make any changes.
+  - **Delete**: If a user has the necessary permissions, they can remove their prompts from the platform.
 
-To learn more about Next.js, take a look at the following resources:
+- **Exploration and Search**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - **Browse Prompts**: All visitors, without the need to sign in, can view the list of prompts on the homepage.
+  - **Advanced Search**: Users can search for prompts by the author's name, prompt's content, or tags. Clicking on a tag initiates a search for that tag.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **User Profiles**:
 
-## Deploy on Vercel
+  - Visitors and users can view profiles of other users to see the prompts they have created.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  ##License
+  -Distributed under the MIT License. See LICENSE for more information.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+##Contact
+RiccoRichards Tr - tr.riccorichards@gmail.com
+LinkedIn ==> https://www.linkedin.com/in/riccot/
+
+## Getting Started
+
+To get started with My Application, follow the steps below:
+
+### Prerequisites
+
+- Node.js
+- npm or Yarn
+- A Google Cloud account for OAuth setup
+
+### Installation
+
+1. Clone the repository;
