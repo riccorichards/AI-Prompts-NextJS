@@ -16,29 +16,9 @@
   justify-content: center;
   padding: 120px 24px 160px 24px;
   pointer-events: none;
+  background-color: #0a5552;
+  z-index: -1;
 }
-
-/*.main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
-  position: absolute;
-  content: "";
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  top: 0;
-}
-
-.main:after {
-  content: "";
-  background-image: url("/assets/images/grid.svg");
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  opacity: 0.4;
-  filter: invert(1);
-}*/
 
 .gradient {
   height: fit-content;
@@ -102,7 +82,7 @@
 }
 
 .desc {
-  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+  @apply mt-5 text-lg text-gray-900 sm:text-xl max-w-2xl;
 }
 
 .search_input {
@@ -128,11 +108,11 @@
 
 /* Form Component */
 .form_textarea {
-  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-900 outline-0;
 }
 
 .form_input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-900 outline-0;
 }
 
 /* Nav Component */
@@ -145,7 +125,7 @@
 }
 
 .dropdown_link {
-  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+  @apply text-sm font-inter text-gray-700 hover:text-gray-900 font-medium;
 }
 
 /* PromptCard Component */
