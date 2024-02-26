@@ -1,29 +1,37 @@
 "use client";
 
 import React, { FormEvent, useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Form from "@/components/Form";
 
 const UpdatePrompt = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const promptId = searchParams.get("id");
-
+  const [promptId, setPromptId] = useState<string | null>(null);
   const [post, setPost] = useState({ prompt: "", tag: "" });
   const [submitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
+    // Ensuring this runs only client-side where `window` is defined
+    if (typeof window !== "undefined") {
+      const { search } = window.location;
+      const params = new URLSearchParams(search);
+      const id = params.get("id");
+      setPromptId(id);
+    }
+  }, []);
+
+  useEffect(() => {
     const getPromptDetails = async () => {
+      if (!promptId) return; // Early return if `promptId` is `null`
       const response = await fetch(`/api/prompt/${promptId}`);
       const data = await response.json();
-
       setPost({
         prompt: data.prompt,
         tag: data.tag,
       });
     };
 
-    if (promptId) getPromptDetails();
+    getPromptDetails();
   }, [promptId]);
 
   const updatePrompt = async (e: FormEvent<HTMLFormElement>) => {
