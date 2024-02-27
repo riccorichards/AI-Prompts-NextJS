@@ -3,6 +3,8 @@
 import { useState, useEffect, FC } from "react";
 
 import PromptCard from "./PromptCard";
+import { useSession } from "next-auth/react";
+import { ExtendedSession } from "@/app/api/auth/[...nextauth]/route";
 
 export interface CreatorType {
   email: string;
@@ -37,7 +39,7 @@ const PromptCardList: FC<{
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState<PropsDataType[]>([]);
-
+  const session = useSession().data as ExtendedSession;
   // Search states
   const [searchText, setSearchText] = useState<string>("");
   const [searchTimeout, setSearchTimeout] = useState<
@@ -45,25 +47,26 @@ const Feed = () => {
   >(null);
   const [searchedResults, setSearchedResults] = useState<PropsDataType[]>([]);
 
-  const fetchPosts = async () => {
-    try {
-      const response = await fetch("/api/prompt");
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-
-      setAllPosts(data);
-    } catch (error) {
-      console.error("Failed to fetch or parse:", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch(`/api/users/${session?.user?.id}/posts`);
+        //const response = await fetch("/api/prompt");
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        return setAllPosts(data);
+      } catch (error) {
+        console.error("Failed to fetch or parse:", error);
+      }
+    };
+
     fetchPosts();
-  }, []);
+  }, [session?.user?.id]);
 
   const filterPrompts = (searchtext: string) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
