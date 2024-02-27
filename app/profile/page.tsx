@@ -16,7 +16,7 @@ const MyProfile = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       //const response = await fetch(`/api/users/${session?.user?.id}/posts`);
-      const response = await fetch(`/api/prompt`);
+      const response = await fetch(`/api/all-prompts`);
       const data = await response.json();
       console.log({ data });
       setMyPosts(data);

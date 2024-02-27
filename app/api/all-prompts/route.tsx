@@ -7,7 +7,7 @@ export const GET = async (request: NextRequest) => {
     await connectToDB();
 
     const prompts = await Prompt.find({}).populate("creator");
-    console.log({ prompts });
+    console.log({ prompts, note: "Server" });
 
     return new Response(JSON.stringify(prompts), {
       status: 200,
