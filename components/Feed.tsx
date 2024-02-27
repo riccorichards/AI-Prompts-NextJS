@@ -3,8 +3,6 @@
 import { useState, useEffect, FC } from "react";
 
 import PromptCard from "./PromptCard";
-import { useSession } from "next-auth/react";
-import { ExtendedSession } from "@/app/api/auth/[...nextauth]/route";
 
 export interface CreatorType {
   email: string;
@@ -39,7 +37,6 @@ const PromptCardList: FC<{
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState<PropsDataType[]>([]);
-  const session = useSession().data as ExtendedSession;
   // Search states
   const [searchText, setSearchText] = useState<string>("");
   const [searchTimeout, setSearchTimeout] = useState<
@@ -50,8 +47,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`/api/users/${session?.user?.id}/posts`);
-        //const response = await fetch("/api/prompt");
+        const response = await fetch("/api/all-prompts");
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -66,7 +62,7 @@ const Feed = () => {
     };
 
     fetchPosts();
-  }, [session?.user?.id]);
+  }, []);
 
   const filterPrompts = (searchtext: string) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
