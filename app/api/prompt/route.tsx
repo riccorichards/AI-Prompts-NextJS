@@ -1,11 +1,12 @@
 import Prompt from "@/models/Prompt";
 import { connectToDB } from "@/utils/database";
+import { NextRequest } from "next/server";
 
-export const GET = async (request: Request) => {
+export const GET = async (request: NextRequest) => {
   try {
     await connectToDB();
 
-    const prompts = await Prompt.find().populate("creator").lean();
+    const prompts = await Prompt.find({}).populate("creator");
 
     return new Response(JSON.stringify(prompts), { status: 200 });
   } catch (error) {
