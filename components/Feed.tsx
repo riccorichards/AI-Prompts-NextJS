@@ -47,7 +47,9 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("/api/all-prompts");
+        const response = await fetch(
+          "https://ai-prompts-next-js.vercel.app/api/all-prompts"
+        );
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
